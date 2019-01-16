@@ -108,10 +108,10 @@ def combined_thresh(img):
     hls_binary = hls_select(img, thresh=(100, 255))
     luv_binary = luv_select(img, thresh=(220, 255))
     # Gradient thresholding
-    gradx = abs_sobel_thresh(img, orient='x', sobel_kernel=1, abs_thresh=(20, 120))
+    gradx = abs_sobel_thresh(img, orient='x', sobel_kernel=1, abs_thresh=(20, 160))
     grady = abs_sobel_thresh(img, orient='y', sobel_kernel=7, abs_thresh=(10, 120))
     mag_binary = mag_thresh(img, sobel_kernel=7, mag_thresh=(30, 100))
-    dir_binary = dir_threshold(img, sobel_kernel=15, dir_thresh=(0.7, 1.3))
+    dir_binary = dir_threshold(img, sobel_kernel=15, dir_thresh=(0.5, 1.4))
     # Combined thresholding
     combined = np.zeros_like(dir_binary)*255
     combined[(hls_binary == 1 ) | (luv_binary == 1) \
